@@ -1,0 +1,841 @@
+/* Reeva Dev Exact 3-Screen AI Agent Styles */
+
+.reeva-ai-widget {
+  position: fixed;
+  right: 24px;
+  bottom: 24px;
+  z-index: 999999;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  color: #1e293b;
+}
+
+/* Launcher Wrapper */
+.reeva-ai-launcher-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 66px;
+  height: 66px;
+}
+
+/* Gemini-Style Rotating Cosmic Gradient Ring */
+.reeva-ai-cosmic-ring {
+  position: absolute;
+  inset: -3px;
+  border-radius: 50%;
+  background: conic-gradient(
+    from 0deg,
+    #00e5ff 0%,
+    #0099ff 25%,
+    #7c3aed 50%,
+    #ec4899 75%,
+    #00e5ff 100%
+  );
+  animation: reeva-spin-cosmic 3.5s linear infinite;
+  filter: blur(1.5px);
+  z-index: 1;
+  opacity: 0.95;
+  transition: opacity 0.3s ease;
+}
+
+.reeva-ai-cosmic-ring.is-open {
+  opacity: 0.5;
+  animation-duration: 6s;
+}
+
+/* Ambient Pulsating Glow Aura */
+.reeva-ai-ambient-glow {
+  position: absolute;
+  inset: -10px;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle,
+    rgba(0, 180, 255, 0.75) 0%,
+    rgba(124, 58, 237, 0.45) 50%,
+    rgba(236, 72, 153, 0.2) 75%,
+    transparent 100%
+  );
+  filter: blur(12px);
+  animation: reeva-glow-pulse 2.6s ease-in-out infinite alternate;
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* Floating Launcher Button matching Image 1 */
+.reeva-ai-launcher {
+  position: relative;
+  z-index: 2;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #00b4d8 0%, #0096c7 35%, #0077b6 70%, #023e8a 100%);
+  border: 2px solid rgba(255, 255, 255, 0.9);
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 
+    inset 0 2px 4px rgba(255, 255, 255, 0.6),
+    0 8px 24px rgba(0, 119, 182, 0.45),
+    0 2px 6px rgba(0, 0, 0, 0.15);
+  transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+  outline: none;
+  animation: reeva-levitate 3s ease-in-out infinite alternate;
+}
+
+.reeva-ai-launcher:hover {
+  transform: scale(1.08) translateY(-2px);
+  box-shadow: 
+    inset 0 2px 6px rgba(255, 255, 255, 0.8),
+    0 14px 32px rgba(0, 119, 182, 0.65),
+    0 0 24px rgba(0, 229, 255, 0.7);
+}
+
+.reeva-ai-launcher:active {
+  transform: scale(0.95);
+}
+
+.reeva-ai-launcher.is-open {
+  animation: none;
+  background: linear-gradient(135deg, #0088cc 0%, #006699 100%);
+}
+
+/* Inner Speech Bubble Icon */
+.reeva-launcher-bubble-icon {
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
+  animation: reeva-bubble-shimmer 3s ease-in-out infinite;
+}
+
+@keyframes reeva-spin-cosmic {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+@keyframes reeva-glow-pulse {
+  0% { transform: scale(0.9); opacity: 0.55; }
+  50% { transform: scale(1.15); opacity: 0.9; filter: blur(15px); }
+  100% { transform: scale(0.9); opacity: 0.55; }
+}
+
+@keyframes reeva-levitate {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-3px); }
+  100% { transform: translateY(0px); }
+}
+
+@keyframes reeva-bubble-shimmer {
+  0%, 100% { transform: scale(1); filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2)); }
+  50% { transform: scale(1.06); filter: drop-shadow(0 2px 8px rgba(255, 255, 255, 0.7)); }
+}
+
+/* Main Agent Modal Window */
+.reeva-ai-window {
+  width: 380px;
+  height: 580px;
+  max-width: calc(100vw - 32px);
+  max-height: calc(100vh - 100px);
+  background: #fbfbfd;
+  border-radius: 16px;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.14), 0 2px 8px rgba(0, 0, 0, 0.06);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  margin-bottom: 14px;
+  border: 1px solid #eef2f6;
+  animation: reeva-fade-up 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes reeva-fade-up {
+  from { opacity: 0; transform: translateY(14px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Powered by Footer */
+.reeva-ai-powered {
+  text-align: center;
+  font-size: 11px;
+  color: #64748b;
+  padding: 8px 12px 10px;
+  background: #fbfbfd;
+  flex-shrink: 0;
+  border-top: 1px solid rgba(226, 232, 240, 0.6);
+}
+
+/* ==========================================================================
+   SCREEN 1: WELCOME / HOME SCREEN
+   ========================================================================== */
+.reeva-screen-welcome {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  background: #fbfbfd;
+}
+
+.reeva-welcome-top {
+  padding: 24px 20px 16px;
+  background: #ffffff;
+  border-bottom: 1px solid #f1f5f9;
+}
+
+.reeva-welcome-top h1 {
+  font-size: 24px;
+  font-weight: 700;
+  color: #1e293b;
+  margin: 0 0 4px 0;
+  letter-spacing: -0.02em;
+}
+
+.reeva-welcome-top p {
+  font-size: 13px;
+  color: #64748b;
+  margin: 0;
+}
+
+.reeva-doc-status-badge {
+  display: inline-block;
+  margin-top: 8px;
+  background: #eff6ff;
+  border: 1px solid #bfdbfe;
+  color: #1d4ed8;
+  padding: 4px 10px;
+  border-radius: 6px;
+  font-size: 12px;
+}
+
+.reeva-welcome-body {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 20px 18px 16px;
+  gap: 12px;
+}
+
+/* "We're here to help" Card */
+.reeva-help-card {
+  background: #ffffff;
+  border-radius: 14px;
+  padding: 18px 20px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
+  border: 1px solid #eef2f6;
+}
+
+.reeva-help-card h3 {
+  font-size: 15px;
+  font-weight: 700;
+  color: #0f172a;
+  margin: 0 0 4px 0;
+}
+
+.reeva-help-card p {
+  font-size: 13px;
+  color: #64748b;
+  margin: 0 0 14px 0;
+}
+
+.reeva-start-conv-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: #0099e6;
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+  background: none;
+  border: none;
+  padding: 0;
+  transition: gap 0.2s ease;
+}
+
+.reeva-start-conv-link:hover {
+  color: #0077b3;
+  gap: 9px;
+}
+
+/* Quick Topic Pills on Welcome Screen */
+.reeva-welcome-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 4px;
+}
+
+.reeva-welcome-pill {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  padding: 6px 10px;
+  border-radius: 12px;
+  font-size: 11.5px;
+  color: #475569;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.reeva-welcome-pill:hover {
+  border-color: #0099e6;
+  color: #0099e6;
+  background: #f0f9ff;
+}
+
+/* ==========================================================================
+   COMMON HEADER FOR SCREENS 2 & 3
+   ========================================================================== */
+.reeva-nav-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 18px;
+  background: #ffffff;
+  border-bottom: 1px solid #f1f5f9;
+  flex-shrink: 0;
+}
+
+.reeva-nav-header-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.reeva-back-btn {
+  background: none;
+  border: none;
+  color: #334155;
+  cursor: pointer;
+  padding: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 6px;
+  transition: background 0.15s ease;
+}
+
+.reeva-back-btn:hover {
+  background: #f1f5f9;
+}
+
+.reeva-nav-header-titles h2 {
+  font-size: 15px;
+  font-weight: 700;
+  color: #0f172a;
+  margin: 0;
+}
+
+.reeva-nav-header-titles p {
+  font-size: 11.5px;
+  color: #64748b;
+  margin: 2px 0 0 0;
+}
+
+.reeva-end-chat-btn {
+  background: none;
+  border: none;
+  color: #ef4444;
+  cursor: pointer;
+  padding: 6px;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.15s ease;
+}
+
+.reeva-end-chat-btn:hover {
+  background: #fee2e2;
+}
+
+/* ==========================================================================
+   SCREEN 2: PRE-CHAT FORM
+   ========================================================================== */
+.reeva-screen-form {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  background: #fbfbfd;
+}
+
+.reeva-form-scroll {
+  flex: 1;
+  overflow-y: auto;
+  padding: 20px 20px;
+}
+
+.reeva-form-group {
+  margin-bottom: 16px;
+}
+
+.reeva-form-group label {
+  display: block;
+  font-size: 13px;
+  font-weight: 600;
+  color: #0f172a;
+  margin-bottom: 6px;
+}
+
+.reeva-form-group label.has-error {
+  color: #f43f5e;
+}
+
+.reeva-form-input,
+.reeva-form-textarea {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 11px 14px;
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
+  font-size: 13.5px;
+  outline: none;
+  background: #ffffff;
+  color: #1e293b;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  font-family: inherit;
+}
+
+.reeva-form-input:focus,
+.reeva-form-textarea:focus {
+  border-color: #0099e6;
+  box-shadow: 0 0 0 3px rgba(0, 153, 230, 0.12);
+}
+
+.reeva-form-input.has-error {
+  border-color: #f43f5e;
+}
+
+.reeva-field-error {
+  font-size: 11px;
+  color: #f43f5e;
+  margin-top: 4px;
+  display: block;
+}
+
+.reeva-form-textarea {
+  resize: vertical;
+  min-height: 85px;
+}
+
+.reeva-submit-btn {
+  width: 100%;
+  background: #0099e6;
+  color: #ffffff;
+  border: none;
+  padding: 13px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s ease;
+  margin-top: 6px;
+}
+
+.reeva-submit-btn:hover {
+  background: #0088cc;
+}
+
+/* ==========================================================================
+   SCREEN 3: CONVERSATION INTERFACE (Matching Image 2)
+   ========================================================================== */
+.reeva-screen-chat {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  background: #ffffff;
+}
+
+.reeva-chat-doc-banner {
+  background: #f0f9ff;
+  border-bottom: 1px solid #e0f2fe;
+  padding: 6px 14px;
+  font-size: 12px;
+  color: #0369a1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.reeva-chat-scroll {
+  flex: 1;
+  overflow-y: auto;
+  padding: 16px 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  background: #ffffff;
+}
+
+/* Date Divider (--- Today ---) */
+.reeva-date-divider {
+  display: flex;
+  align-items: center;
+  margin: 4px 0 10px;
+  gap: 12px;
+}
+
+.reeva-date-line {
+  flex: 1;
+  height: 1px;
+  background: #e2e8f0;
+}
+
+.reeva-date-label {
+  font-size: 12px;
+  color: #64748b;
+  font-weight: 500;
+}
+
+/* User Message Bubble */
+.reeva-msg-row-user {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.reeva-user-bubble {
+  background: #0099e6;
+  color: #ffffff;
+  padding: 11px 16px;
+  border-radius: 18px 18px 4px 18px;
+  font-size: 13.5px;
+  line-height: 1.45;
+  max-width: 82%;
+  word-break: break-word;
+  box-shadow: 0 2px 8px rgba(0, 153, 230, 0.2);
+}
+
+/* AI Message Bubble matching Image 2 */
+.reeva-msg-row-ai {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  max-width: 90%;
+}
+
+.reeva-ai-avatar-circle {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: #fce7f3;
+  color: #db2777;
+  font-size: 12px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  margin-top: 4px;
+}
+
+.reeva-ai-bubble-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.reeva-ai-bubble {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.04);
+  border-radius: 18px;
+  padding: 13px 16px;
+  font-size: 13.5px;
+  line-height: 1.55;
+  color: #1e293b;
+  word-break: break-word;
+}
+
+.reeva-ai-sender-name {
+  font-size: 11px;
+  color: #94a3b8;
+  padding-left: 4px;
+}
+
+/* Table rendering inside AI response bubble */
+.reeva-msg-table-wrap {
+  overflow-x: auto;
+  margin: 6px 0;
+  border-radius: 6px;
+  border: 1px solid #e2e8f0;
+}
+
+.reeva-msg-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 12px;
+}
+
+.reeva-msg-table td {
+  padding: 5px 8px;
+  border: 1px solid #e2e8f0;
+}
+
+.reeva-table-head td {
+  background: #f8fafc;
+  font-weight: 700;
+  color: #0f172a;
+}
+
+/* Chat Input Bar matching Image 2 */
+.reeva-chat-input-bar {
+  padding: 10px 14px;
+  background: #ffffff;
+  border-top: 1px solid #f1f5f9;
+}
+
+.reeva-input-container {
+  display: flex;
+  align-items: center;
+  background: #ffffff;
+  border: 1.5px solid #0099e6;
+  border-radius: 12px;
+  padding: 4px 10px;
+  gap: 6px;
+}
+
+.reeva-chat-input {
+  flex: 1;
+  border: none;
+  outline: none;
+  padding: 8px 6px;
+  font-size: 13.5px;
+  color: #1e293b;
+  background: transparent;
+  font-family: inherit;
+}
+
+.reeva-input-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #0099e6;
+}
+
+.reeva-icon-btn {
+  background: none;
+  border: none;
+  color: #0099e6;
+  cursor: pointer;
+  padding: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  border-radius: 6px;
+  transition: opacity 0.15s ease;
+}
+
+.reeva-icon-btn:hover {
+  opacity: 0.75;
+}
+
+.reeva-icon-btn.is-active {
+  color: #ef4444;
+}
+
+/* Send icon button inside input */
+.reeva-send-icon-btn {
+  background: #0099e6;
+  color: #ffffff;
+  border: none;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 12px;
+  transition: background 0.15s ease;
+}
+
+.reeva-send-icon-btn:hover {
+  background: #0077b3;
+}
+
+/* Suggestion Chips */
+.reeva-chat-suggestions {
+  padding: 6px 14px;
+  display: flex;
+  gap: 6px;
+  overflow-x: auto;
+  white-space: nowrap;
+  background: #ffffff;
+  border-top: 1px solid #f8fafc;
+}
+
+.reeva-chat-suggestions::-webkit-scrollbar {
+  height: 3px;
+}
+
+.reeva-suggestion-chip {
+  background: #f8fafc;
+  color: #334155;
+  border: 1px solid #e2e8f0;
+  padding: 4px 10px;
+  border-radius: 12px;
+  font-size: 11px;
+  cursor: pointer;
+  flex-shrink: 0;
+  transition: all 0.15s ease;
+}
+
+.reeva-suggestion-chip:hover {
+  background: #f0f9ff;
+  color: #0099e6;
+  border-color: #bae6fd;
+}
+
+/* Call Modal popup */
+.reeva-call-modal {
+  position: absolute;
+  bottom: 75px;
+  left: 20px;
+  right: 20px;
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.18);
+  border: 1px solid #e2e8f0;
+  padding: 14px;
+  animation: reeva-fade-up 0.2s ease;
+}
+
+.reeva-call-modal h4 {
+  margin: 0 0 8px 0;
+  font-size: 13px;
+  font-weight: 700;
+  color: #0f172a;
+}
+
+.reeva-call-options {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.reeva-call-link {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 10px;
+  background: #f8fafc;
+  border-radius: 6px;
+  color: #0099e6;
+  text-decoration: none;
+  font-size: 12.5px;
+  font-weight: 600;
+}
+
+.reeva-call-link:hover {
+  background: #f0f9ff;
+}
+
+.reeva-call-close {
+  margin-top: 8px;
+  width: 100%;
+  background: #f1f5f9;
+  border: none;
+  padding: 6px;
+  border-radius: 6px;
+  font-size: 11.5px;
+  cursor: pointer;
+  color: #475569;
+}
+
+/* Voice Conversation Header Toggle */
+.reeva-voice-toggle-btn {
+  background: #f1f5f9;
+  border: 1px solid #e2e8f0;
+  border-radius: 6px;
+  cursor: pointer;
+  padding: 4px 6px;
+  font-size: 13px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+}
+
+.reeva-voice-toggle-btn.is-active {
+  background: #e0f2fe;
+  border-color: #7dd3fc;
+}
+
+.reeva-voice-toggle-btn:hover {
+  transform: scale(1.05);
+}
+
+/* Individual Message Speaker Button */
+.reeva-msg-speaker-btn {
+  background: none;
+  border: none;
+  color: #0099e6;
+  font-size: 11px;
+  font-weight: 600;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  padding: 2px 4px;
+  border-radius: 4px;
+  transition: background 0.15s ease;
+}
+
+.reeva-msg-speaker-btn:hover {
+  background: #f0f9ff;
+}
+
+/* Active Microphone Pulse Indicator */
+.reeva-mic-btn.is-listening {
+  color: #ef4444 !important;
+  background: #fee2e2 !important;
+  border-radius: 50%;
+  animation: reeva-pulse-mic 1.2s infinite;
+}
+
+@keyframes reeva-pulse-mic {
+  0% { box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.5); }
+  70% { box-shadow: 0 0 0 8px rgba(239, 68, 68, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(239, 68, 68, 0); }
+}
+
+/* Listening Banner */
+.reeva-listening-banner {
+  background: #eff6ff;
+  border-top: 1px solid #bfdbfe;
+  padding: 6px 14px;
+  font-size: 12px;
+  color: #1d4ed8;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.reeva-mic-pulse-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #ef4444;
+  animation: reeva-pulse-dot 1s infinite;
+}
+
+@keyframes reeva-pulse-dot {
+  0% { transform: scale(0.9); opacity: 0.7; }
+  50% { transform: scale(1.3); opacity: 1; }
+  100% { transform: scale(0.9); opacity: 0.7; }
+}
+
+.reeva-mic-stop-btn {
+  background: #ef4444;
+  color: #ffffff;
+  border: none;
+  padding: 3px 8px;
+  border-radius: 4px;
+  font-size: 11px;
+  font-weight: 600;
+  cursor: pointer;
+}

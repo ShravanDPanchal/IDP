@@ -1,0 +1,36 @@
+[theme]
+# Light theme for better document preview visibility
+primaryColor = "#0066cc"
+backgroundColor = "#ffffff"
+secondaryBackgroundColor = "#f0f2f6"
+textColor = "#262730"
+font = "sans serif"
+
+[client]
+# Show errors in sidebar for debugging
+showErrorDetails = false
+toolbarMode = "viewer"
+
+[logger]
+# Logging configuration
+level = "info"
+
+[server]
+# Performance settings
+maxUploadSize = 1000  # 1GB max upload
+enableXsrfProtection = true
+enableCORS = true
+headless = false
+
+# Port configuration
+port = 8501
+
+[browser]
+# Browser behavior
+gatherUsageStats = false
+serverAddress = "localhost"
+
+[runner]
+# Magic command configuration
+magicEnabled = true
+
